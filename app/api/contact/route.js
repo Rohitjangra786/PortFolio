@@ -112,7 +112,7 @@ export async function POST(request) {
     console.error('API Error:', error.message);
     return NextResponse.json({
       success: false,
-      message: 'Server error occurred.',
+      message: error.message || 'Server error occurred.',
     }, { status: 500 });
   }
 };
