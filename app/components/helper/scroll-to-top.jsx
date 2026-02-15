@@ -3,32 +3,39 @@
 import { useEffect, useState } from "react";
 import { FaArrowUp } from "react-icons/fa6";
 
-const DEFAULT_BTN_CLS =
-  "fixed bottom-8 right-6 z-50 flex items-center rounded-full bg-gradient-to-r from-pink-500 to-violet-600 p-4 hover:text-xl transition-all duration-300 ease-out";
-const SCROLL_THRESHOLD = 50;
-
 const ScrollToTop = () => {
-  const [btnCls, setBtnCls] = useState(DEFAULT_BTN_CLS);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > SCROLL_THRESHOLD) {
-        setBtnCls(DEFAULT_BTN_CLS.replace(" hidden", ""));
+    const toggleVisibility = () => {
+      if (window.scrollY > 300) {
+        setIsVisible(true);
       } else {
-        setBtnCls(DEFAULT_BTN_CLS + " hidden");
+        setIsVisible(false);
       }
     };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll, { passive: true });
-    };
+
+    window.addEventListener("scroll", toggleVisibility);
+
+    return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
-  const onClickBtn = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
-    <button className={btnCls} onClick={onClickBtn}>
-      <FaArrowUp />
+    <button
+      className={`fixed bottom-8 right-8 z-50 h-12 w-12 rounded-full bg-gradient-to-r from-pink-500 to-violet-600 p-[1px] shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none ${isVisible ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-10"
+        }`}
+      onClick={scrollToTop}
+    >
+      <span className="flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-[#0d1224] text-xl text-white transition-all duration-200 hover:bg-transparent">
+        <FaArrowUp />
+      </span>
     </button>
   );
 };

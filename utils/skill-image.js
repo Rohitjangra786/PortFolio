@@ -33,6 +33,7 @@ import illustrator from '../app/assets/svg/skills/illustrator.svg';
 import ionic from '../app/assets/svg/skills/ionic.svg';
 import java from '../app/assets/svg/skills/java.svg';
 import javascript from '../app/assets/svg/skills/javascript.svg';
+import jdbc from '../app/assets/svg/skills/jdbc.svg';
 import julia from '../app/assets/svg/skills/julia.svg';
 import kotlin from '../app/assets/svg/skills/kotlin.svg';
 import lightroom from '../app/assets/svg/skills/lightroom.svg';
@@ -59,6 +60,7 @@ import react from '../app/assets/svg/skills/react.svg';
 import ruby from '../app/assets/svg/skills/ruby.svg';
 import selenium from '../app/assets/svg/skills/selenium.svg';
 import sketch from '../app/assets/svg/skills/sketch.svg';
+import springboot from '../app/assets/svg/skills/springboot.svg';
 import strapi from '../app/assets/svg/skills/strapi.svg';
 import svelte from '../app/assets/svg/skills/svelte.svg';
 import swift from '../app/assets/svg/skills/swift.svg';
@@ -233,6 +235,10 @@ export const skillsImage = (skill) => {
       return javascript;
     case 'cybersecurity':
       return docker;
+    case 'spring boot':
+      return springboot;
+    case 'jdbc':
+      return jdbc;
     default:
       break;
   }

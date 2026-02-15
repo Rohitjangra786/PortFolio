@@ -9,7 +9,7 @@ import GlowCard from "../../helper/glow-card";
 
 function Experience() {
   return (
-    <div id="experience" className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">
+    <div id="experience" className="relative z-50 border-t my-8 lg:my-12 border-[#25213b]">
       <Image
         src="/section.svg"
         alt="Hero"
@@ -22,7 +22,7 @@ function Experience() {
         <div className="flex  items-center">
           <span className="w-24 h-[2px] bg-[#1a1443]"></span>
           <span className="bg-[#1a1443] w-fit text-white p-2 px-5 text-xl rounded-md">
-            Experiences
+            <span className="bg-gradient-to-r from-pink-500 to-violet-600 bg-clip-text text-transparent">Experiences</span>
           </span>
           <span className="w-24 h-[2px] bg-[#1a1443]"></span>
         </div>
@@ -55,11 +55,11 @@ function Experience() {
                         </p>
                       </div>
                       <div className="flex items-center gap-x-8 px-3 py-5">
-                        <div className="text-violet-500  transition-all duration-300 hover:scale-125">
+                        <div className={`text-violet-500  transition-all duration-300 hover:scale-125 ${experience.title.includes("Founder") ? "text-[#16f2b3]" : ""}`}>
                           <BsPersonWorkspace size={36} />
                         </div>
                         <div>
-                          <p className="text-base sm:text-xl mb-2 font-medium uppercase">
+                          <p className={`text-base sm:text-xl mb-2 font-medium uppercase ${experience.title.includes("Founder") ? "text-[#16f2b3]" : ""}`}>
                             {experience.title}
                           </p>
                           <p className="text-sm sm:text-base">
