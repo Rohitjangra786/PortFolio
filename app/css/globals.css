@@ -341,31 +341,19 @@ body {
   }
 }
 
-/* ============ vertical scroll journey rail ============ */
+/* ============ serpentine scroll journey path ============ */
 
-.journey-rail {
-  position: fixed;
-  left: 8px;
-  top: 0;
-  height: 100vh;
-  height: 100dvh;
-  width: 24px;
-  z-index: 55;
+.journey-snake {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   pointer-events: none;
   user-select: none;
 }
 
-@media (min-width: 1280px) {
-  .journey-rail {
-    left: 28px;
-  }
-}
-
 @media (max-width: 640px) {
-  .journey-rail {
-    left: 2px;
-    width: 18px;
-    opacity: 0.75;
+  .journey-snake {
+    opacity: 0.8;
   }
 }
 
