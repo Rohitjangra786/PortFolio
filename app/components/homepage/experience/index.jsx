@@ -6,6 +6,9 @@ import { BsPersonWorkspace } from "react-icons/bs";
 import experience from '../../../assets/lottie/code.json';
 import AnimationLottie from "../../helper/animation-lottie";
 import GlowCard from "../../helper/glow-card";
+import OrbitalRings from "../../helper/orbital-rings";
+import ScrollReveal from "../../helper/scroll-reveal";
+import TiltCard from "../../helper/tilt-card";
 
 function Experience() {
   return (
@@ -30,17 +33,24 @@ function Experience() {
 
       <div className="py-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
-          <div className="flex justify-center items-start">
-            <div className="w-full h-full">
-              <AnimationLottie animationPath={experience} />
+          <ScrollReveal direction="left" className="lg:sticky lg:top-20 lg:self-start">
+            <div className="w-full">
+              <div className="relative z-10">
+                <AnimationLottie animationPath={experience} />
+              </div>
+              <div className="relative h-[280px] w-full sm:h-[320px] -mt-6">
+                <OrbitalRings className="absolute inset-0" />
+              </div>
             </div>
-          </div>
+          </ScrollReveal>
 
           <div>
             <div className="flex flex-col gap-6">
               {
-                experiences.map(experience => (
-                  <GlowCard key={experience.id} identifier={`experience-${experience.id}`}>
+                experiences.map((experience, index) => (
+                  <ScrollReveal key={experience.id} direction="left" delay={index * 80}>
+                  <TiltCard intensity={5}>
+                  <GlowCard identifier={`experience-${experience.id}`}>
                     <div className="p-3 relative">
                       <Image
                         src="/blur-23.svg"
@@ -54,8 +64,8 @@ function Experience() {
                           {experience.duration}
                         </p>
                       </div>
-                      <div className="flex items-center gap-x-8 px-3 py-5">
-                        <div className={`text-violet-500  transition-all duration-300 hover:scale-125 ${experience.title.includes("Founder") ? "text-[#16f2b3]" : ""}`}>
+                      <div className="flex items-start gap-x-8 px-3 py-5">
+                        <div className={`text-violet-500 transition-all duration-300 hover:scale-125 shrink-0 mt-1 ${experience.title.includes("Founder") ? "text-[#16f2b3]" : ""}`}>
                           <BsPersonWorkspace size={36} />
                         </div>
                         <div>
@@ -65,10 +75,21 @@ function Experience() {
                           <p className="text-sm sm:text-base">
                             {experience.company}
                           </p>
+                          {experience.details?.length > 0 &&
+                            <ul className="mt-3 flex flex-col gap-1.5 list-disc list-outside ml-4">
+                              {experience.details.map((detail, i) => (
+                                <li key={i} className="text-xs sm:text-sm text-gray-300 leading-relaxed">
+                                  {detail}
+                                </li>
+                              ))}
+                            </ul>
+                          }
                         </div>
                       </div>
                     </div>
                   </GlowCard>
+                  </TiltCard>
+                  </ScrollReveal>
                 ))
               }
             </div>

@@ -1,8 +1,15 @@
 export const personalData = {
   name: "Rohit Kumar",
   profile: '/profile.png',
-  designation: "Assistant Professor & Full Stack Developer",
-  description: "Highly motivated and results-oriented professional (UGC-NET 2023 & 2026 Qualified) with 2+ years of total experience. Experience includes working as an Assistant Professor and as a Full Stack Developer. Actively involved in academic quality assurance and institutional development. Committed to driving innovation, growth, and organizational success through technical and academic expertise.",
+  designation: "Assistant Professor · Co-Founder & CEO · Full-Stack Developer",
+  roles: ["Assistant Professor", "Co-Founder & CEO, Sikshasarovar", "Full-Stack Developer", "Cybersecurity Researcher"],
+  description: "Assistant Professor and Full-Stack Developer with 2+ years of combined academic and industry experience. UGC-NET Qualified (2026). Co-Founder & CEO of Sikshasarovar, a live EdTech platform built on the MERN stack with TypeScript. Author of 5 peer-reviewed journal publications (with DOIs), with additional papers accepted (Taylor & Francis; Springer / Atlantis Press) and under review, in cybersecurity, machine learning, and HCI. Hands-on with Java, Spring Boot, React, Node.js, Express, MongoDB, PostgreSQL, REST APIs, Docker, and AWS. Contributor to NBA Criteria 6 and NAAC Criteria 1 accreditation processes.",
+  highlights: [
+    { label: "Years Experience", value: "2+" },
+    { label: "Publications", value: "9+" },
+    { label: "UGC-NET Qualified", value: "2026" },
+    { label: "EdTech Startup", value: "1" },
+  ],
   email: 'rjangra696@gmail.com',
   phone: '+91 7015204440',
   address: 'New Delhi, India',
@@ -12,6 +19,7 @@ export const personalData = {
   twitter: 'https://twitter.com/rohitjangra786',
   stackOverflow: 'https://stackoverflow.com/users/24509014/rohit-kumar',
   leetcode: "https://leetcode.com/u/rohitjangra786/",
+  sikshasarovar: 'https://sikshasarovar.com',
   devUsername: "rohitjangra786",
   resume: "/Resume.pdf"
 }

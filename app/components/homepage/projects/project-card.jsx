@@ -1,6 +1,9 @@
 // @flow strict
 
+import Link from 'next/link';
 import * as React from 'react';
+import { BsGithub } from 'react-icons/bs';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 
 function ProjectCard({ project }) {
 
@@ -19,6 +22,28 @@ function ProjectCard({ project }) {
         <p className="text-center ml-3 text-[#16f2b3] text-base lg:text-xl">
           {project.name}
         </p>
+        <div className="flex flex-row items-center gap-3 lg:gap-4 absolute top-1/2 -translate-y-1/2 right-4 lg:right-8">
+          {project.code &&
+            <Link
+              href={project.code}
+              target="_blank"
+              aria-label={`View source code of ${project.name}`}
+              className="text-gray-400 hover:text-[#16f2b3] transition-colors duration-300"
+            >
+              <BsGithub size={16} />
+            </Link>
+          }
+          {project.demo &&
+            <Link
+              href={project.demo}
+              target="_blank"
+              aria-label={`Open live demo of ${project.name}`}
+              className="text-gray-400 hover:text-[#16f2b3] transition-colors duration-300"
+            >
+              <FaExternalLinkAlt size={14} />
+            </Link>
+          }
+        </div>
       </div>
       <div className="overflow-hidden border-t-[2px] border-indigo-900 px-4 lg:px-8 py-4 lg:py-8">
         <code className="font-mono text-xs md:text-sm lg:text-base">

@@ -3,6 +3,8 @@
 import { personalData } from "@/utils/data/personal-data";
 import Image from "next/image";
 import Link from "next/link";
+import AnimatedPaths from "../../helper/animated-paths";
+import TiltCard from "../../helper/tilt-card";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { FaFacebook, FaTwitterSquare } from "react-icons/fa";
 import { MdDownload } from "react-icons/md";
@@ -19,6 +21,7 @@ function HeroSection() {
         height={795}
         className="absolute -top-[98px] -z-10"
       />
+      <AnimatedPaths className="absolute inset-x-0 top-0 -z-10 h-full w-full opacity-50" />
 
       <div className="grid grid-cols-1 items-start lg:grid-cols-2 lg:gap-12 gap-y-8">
         <div className="order-2 lg:order-1 flex flex-col items-start justify-center p-2 pb-20 md:pb-10 lg:pt-10">
@@ -26,44 +29,76 @@ function HeroSection() {
             <span className="bg-gradient-to-r from-pink-500 to-violet-600 bg-clip-text text-transparent">Hello,</span> <br />
             This is {' '}
             <span className=" text-pink-500">{personalData.name}</span>
-            {` , I'm a Professional `}
-            <span className=" text-[#16f2b3]">{personalData.designation}</span>
+            {` - `}
+            <span className=" text-[#16f2b3]">Assistant Professor</span>
+            {`, `}
+            <span className=" text-[#16f2b3]">EdTech Founder</span>
+            {` & `}
+            <span className=" text-[#16f2b3]">Full-Stack Developer</span>
             .
           </h1>
 
-          <div className="my-12 flex items-center gap-5">
+          <p className="mt-4 text-sm md:text-base text-gray-300 max-w-xl">
+            UGC-NET Qualified (2026) · Co-Founder & CEO of{' '}
+            <Link href={personalData.sikshasarovar} target="_blank" className="text-pink-500 hover:text-pink-400 transition-colors duration-300 underline-offset-4 hover:underline">
+              Sikshasarovar
+            </Link>
+            {' '}· Researcher in Cybersecurity, ML & HCI
+          </p>
+
+          <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 w-full max-w-xl">
+            {personalData.highlights.map((stat, idx) => (
+              <div key={stat.label} className="float-soft" style={{ animationDelay: `${idx * 0.6}s` }}>
+                <TiltCard intensity={16}>
+                  <div className="neon-border rounded-lg border border-[#1b2c68a0] bg-gradient-to-r from-[#0d1224] to-[#0a0d37] px-3 py-3 text-center h-full">
+                    <div className="tilt-depth">
+                      <p className="text-xl md:text-2xl font-bold text-[#16f2b3]">{stat.value}</p>
+                      <p className="text-[10px] md:text-xs uppercase tracking-wider text-gray-400 mt-1">{stat.label}</p>
+                    </div>
+                  </div>
+                </TiltCard>
+              </div>
+            ))}
+          </div>
+
+          <div className="my-10 lg:my-12 flex items-center gap-5">
             <Link
               href={personalData.github}
               target='_blank'
-              className="transition-all text-pink-500 hover:scale-125 duration-300"
+              aria-label="GitHub profile"
+              className="transition-all text-pink-500 hover:scale-125 duration-300 p-2 -m-1"
             >
               <BsGithub size={30} />
             </Link>
             <Link
               href={personalData.linkedIn}
               target='_blank'
-              className="transition-all text-pink-500 hover:scale-125 duration-300"
+              aria-label="LinkedIn profile"
+              className="transition-all text-pink-500 hover:scale-125 duration-300 p-2 -m-1"
             >
               <BsLinkedin size={30} />
             </Link>
             <Link
               href={personalData.facebook}
               target='_blank'
-              className="transition-all text-pink-500 hover:scale-125 duration-300"
+              aria-label="Facebook profile"
+              className="transition-all text-pink-500 hover:scale-125 duration-300 p-2 -m-1"
             >
               <FaFacebook size={30} />
             </Link>
             <Link
               href={personalData.leetcode}
               target='_blank'
-              className="transition-all text-pink-500 hover:scale-125 duration-300"
+              aria-label="LeetCode profile"
+              className="transition-all text-pink-500 hover:scale-125 duration-300 p-2 -m-1"
             >
               <SiLeetcode size={30} />
             </Link>
             <Link
               href={personalData.twitter}
               target='_blank'
-              className="transition-all text-pink-500 hover:scale-125 duration-300"
+              aria-label="Twitter profile"
+              className="transition-all text-pink-500 hover:scale-125 duration-300 p-2 -m-1"
             >
               <FaTwitterSquare size={30} />
             </Link>
@@ -114,19 +149,19 @@ function HeroSection() {
               <div className="ml-4 lg:ml-8 mr-2">
                 <span className=" text-white">skills:</span>
                 <span className="text-gray-400">{`['`}</span>
+                <span className="text-amber-300">Java</span>
+                <span className="text-gray-400">{"', '"}</span>
+                <span className="text-amber-300">TypeScript</span>
+                <span className="text-gray-400">{"', '"}</span>
+                <span className="text-amber-300">React</span>
+                <span className="text-gray-400">{"', '"}</span>
                 <span className="text-amber-300">Spring Boot</span>
                 <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">JDBC</span>
-                <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">Redux</span>
-                <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">Express</span>
-                <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">NestJS</span>
-                <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">MySql</span>
+                <span className="text-amber-300">Node.js</span>
                 <span className="text-gray-400">{"', '"}</span>
                 <span className="text-amber-300">MongoDB</span>
+                <span className="text-gray-400">{"', '"}</span>
+                <span className="text-amber-300">PostgreSQL</span>
                 <span className="text-gray-400">{"', '"}</span>
                 <span className="text-amber-300">Docker</span>
                 <span className="text-gray-400">{"', '"}</span>
@@ -134,12 +169,17 @@ function HeroSection() {
                 <span className="text-gray-400">{"'],"}</span>
               </div>
               <div>
-                <span className="ml-4 lg:ml-8 mr-2 text-white">hardWorker:</span>
+                <span className="ml-4 lg:ml-8 mr-2 text-white">ugcNetQualified:</span>
                 <span className="text-orange-400">true</span>
                 <span className="text-gray-400">,</span>
               </div>
               <div>
-                <span className="ml-4 lg:ml-8 mr-2 text-white">quickLearner:</span>
+                <span className="ml-4 lg:ml-8 mr-2 text-white">publications:</span>
+                <span className="text-orange-400">9</span>
+                <span className="text-gray-400">,</span>
+              </div>
+              <div>
+                <span className="ml-4 lg:ml-8 mr-2 text-white">edTechFounder:</span>
                 <span className="text-orange-400">true</span>
                 <span className="text-gray-400">,</span>
               </div>
@@ -159,7 +199,7 @@ function HeroSection() {
               </div>
               <div>
                 <span className="ml-12 lg:ml-24 text-cyan-400">this.</span>
-                <span className="mr-2 text-white">hardWorker</span>
+                <span className="mr-2 text-white">ugcNetQualified</span>
                 <span className="text-amber-300">&amp;&amp;</span>
               </div>
               <div>
