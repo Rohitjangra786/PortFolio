@@ -6,8 +6,10 @@ Live Demo: [https://port-folio-sigma-teal.vercel.app/#about]
 
 ## Tech Stack
 
-*   **Framework:** Next.js
-*   **Styling:** Tailwind CSS, SCSS
+*   **Framework:** Next.js, React, TypeScript
+*   **Styling:** Tailwind CSS
+*   **Motion:** GSAP (ScrollTrigger), Lenis, WebGL
+*   **Icons:** React Icons
 *   **Database:** MongoDB
 *   **Email Service:** Nodemailer (Gmail SMTP)
 *   **Hosting:** Vercel / Netlify
@@ -61,6 +63,12 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Updating Content
+
+All content lives in `utils/data/`: `personal.ts`, `projects.ts`, `profile.ts` and `publications.ts`.
+
+To show a real screenshot for a project, add the image to `public/projects/` and set `image: '/projects/<file>'` on that project in `projects.ts`. Projects without an image show a text tile.
+
 ## Deployment
 
 ### Vercel
@@ -79,6 +87,10 @@ If you deploy to Vercel/Netlify, their IP addresses change dynamically. You must
 2.  Add IP Address.
 3.  Select **Allow Access from Anywhere** (`0.0.0.0/0`).
 4.  Confirm.
+
+## Credits
+
+The visual design and decorative assets are based on [modern-portfolio](https://github.com/sanidhyy/modern-portfolio) by Sanidhya Kumar Verma, used under the MIT License. See `THIRD_PARTY_NOTICES.md`.
 
 ## Learn More
 

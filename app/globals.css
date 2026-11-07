@@ -1,0 +1,571 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #131424;
+  --color-surface: #191a2d;
+  --color-ink: #0c0d18;
+  --color-accent: #f13024;
+  /* Accent for small text: #f13024 falls short of 4.5:1 on these backgrounds. */
+  --color-accent-soft: #ff6a5e;
+  /* Data colour: numbers, status, dates, progress and icons. Red stays the brand and the action. */
+  --color-mint: #35e0c2;
+
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 960px;
+  --breakpoint-xl: 1200px;
+}
+
+@theme inline {
+  --font-sora: var(--font-sora-family), sans-serif;
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+@layer base {
+  html {
+    background: #131424;
+    overflow-x: clip;
+  }
+
+  body {
+    @apply min-h-dvh bg-primary leading-relaxed text-white;
+    overflow-x: clip;
+  }
+
+  a,
+  button {
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  :focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  .h1 {
+    @apply mb-8 text-[35px] leading-tight font-semibold md:text-[60px] md:leading-[1.3];
+  }
+
+  .h2 {
+    @apply mb-4 text-[35px] leading-tight font-semibold md:text-[54px] md:leading-[1.3];
+  }
+
+  p {
+    @apply leading-[1.8] font-light text-white/70;
+  }
+
+  .input,
+  .textarea {
+    @apply w-full border-0 border-b border-white/25 bg-transparent outline-hidden transition-colors duration-200 placeholder:font-light placeholder:text-white/40 focus:border-mint;
+  }
+
+  .input {
+    @apply h-12;
+  }
+
+  .textarea {
+    @apply max-h-60 min-h-28 resize-none py-3;
+  }
+
+  .input[aria-invalid="true"],
+  .textarea[aria-invalid="true"] {
+    @apply border-accent-soft;
+  }
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+/* Type */
+.display {
+  font-size: clamp(1.9rem, 4.3vw, 4.25rem);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+}
+
+.full-stop {
+  display: inline-block;
+  width: 0.17em;
+  height: 0.17em;
+  margin-left: 0.05em;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.split-word-mask {
+  padding-bottom: 0.16em;
+  margin-bottom: -0.16em;
+}
+
+/* Hero and manifesto. Without motion they simply stack. */
+.hero-layer {
+  position: relative;
+  height: 100svh;
+  min-height: 34rem;
+  overflow: clip;
+  background-color: var(--color-primary);
+  background-image: radial-gradient(rgb(255 255 255 / 0.07) 1px, transparent 1.5px);
+  background-size: 26px 26px;
+}
+
+.hero-name {
+  font-size: 17.5vw;
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+}
+
+.hero-line {
+  display: inline-flex;
+  overflow: clip;
+  padding-block: 0.04em;
+}
+
+.hero-char,
+.hero-char-inner {
+  display: inline-block;
+}
+
+.hero-stop {
+  display: inline-block;
+  flex: none;
+  width: 0.17em;
+  height: 0.17em;
+  margin-bottom: 0.13em;
+  margin-left: 0.05em;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.hero-portrait-image {
+  filter: saturate(0.82) contrast(1.05);
+  -webkit-mask-image: radial-gradient(62% 56% at 50% 40%, #000 62%, transparent 100%);
+  mask-image: radial-gradient(62% 56% at 50% 40%, #000 62%, transparent 100%);
+}
+
+.manifesto-layer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 100svh;
+  background: var(--color-accent);
+  color: var(--color-ink);
+}
+
+.manifesto-text {
+  font-size: clamp(1.45rem, 3.3vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+@media (min-width: 960px) {
+  .hero-name {
+    font-size: 8.4vw;
+  }
+}
+
+/* Work */
+.work-track {
+  display: flex;
+  flex-direction: column;
+  gap: 4.5rem;
+  padding: 7rem 20px;
+}
+
+@media (min-width: 960px) {
+  /* The plain layout, used when motion is off. The animated row below replaces it. */
+  .work-track {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem 4vw;
+    padding: 14svh 6vw;
+  }
+
+  .work-intro {
+    grid-column: 1 / -1;
+  }
+}
+
+.work-poster {
+  background-color: var(--color-surface);
+  background-image: radial-gradient(rgb(255 255 255 / 0.13) 1.2px, transparent 1.7px);
+  background-size: 22px 22px;
+}
+
+/* Marquee */
+.marquee-row {
+  display: flex;
+  width: max-content;
+}
+
+/* Overlays */
+.route-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  visibility: hidden;
+  pointer-events: none;
+  background: var(--color-accent);
+}
+
+.cursor-dot {
+  position: fixed;
+  top: -5px;
+  left: -5px;
+  z-index: 90;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Preloader */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 95;
+  display: none;
+}
+
+.preloader-strip:nth-child(even) {
+  background: var(--color-primary) !important;
+}
+
+.preloader-strip {
+  flex: 1;
+  margin-right: -1px;
+  background: var(--color-ink);
+}
+
+.preloader-count {
+  position: absolute;
+  bottom: 6svh;
+  left: 6vw;
+  color: #fff;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+/* Section joins and drifting marks */
+.seam {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  height: 10svh;
+  pointer-events: none;
+}
+
+.seam > span {
+  background: currentColor;
+  margin: 0 -0.5px -0.5px 0;
+}
+
+.float-dot {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.float-dot-mint {
+  background: var(--color-mint);
+}
+
+/* Phones keep only the small dots, so nothing large drifts over the text. */
+@media (max-width: 959px) {
+  .float-dot:not(.float-dot-mint) {
+    display: none;
+  }
+}
+
+.float-dot-ring {
+  background: none;
+  border: 1px solid rgb(255 255 255 / 0.18);
+}
+
+/* Panels on a coloured surface switch to dark ink. */
+.on-color,
+.on-color * {
+  color: var(--color-ink) !important;
+  border-color: rgb(12 13 24 / 0.28) !important;
+}
+
+/* Icons */
+
+.service-icon {
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  background: var(--color-mint);
+  color: var(--color-ink);
+  font-size: 1.4rem;
+}
+
+.on-color .service-icon {
+  background: var(--color-ink);
+  color: #fff !important;
+}
+
+.on-color .service-icon * {
+  color: #fff !important;
+}
+
+@media (min-width: 960px) {
+  .service-icon {
+    width: 4.5rem;
+    height: 4.5rem;
+    font-size: 2rem;
+  }
+}
+
+@keyframes icon-float {
+  50% {
+    transform: translateY(-7px) rotate(6deg);
+  }
+}
+
+@keyframes icon-bob {
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@keyframes arrow-loop {
+  49% {
+    transform: translate(130%, -130%);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-130%, 130%);
+    opacity: 0;
+  }
+}
+
+@keyframes arrow-pass {
+  49% {
+    transform: translateX(150%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(-150%);
+    opacity: 0;
+  }
+}
+
+@keyframes icon-wiggle {
+  25% {
+    transform: rotate(-14deg) scale(1.2);
+  }
+  75% {
+    transform: rotate(12deg) scale(1.2);
+  }
+}
+
+.motion .service-icon svg {
+  animation: icon-float 3.2s ease-in-out infinite;
+}
+
+@keyframes icon-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Runs on the compositor, and only while the section is on screen. */
+.motion .marquee-icon {
+  animation: icon-spin 7s linear infinite paused;
+}
+
+.motion .is-spinning .marquee-icon {
+  animation-play-state: running;
+}
+
+.motion [data-skew] {
+  will-change: transform;
+}
+
+.motion .scroll-hint {
+  animation: icon-bob 1.6s ease-in-out infinite;
+}
+
+.motion .group:hover .arrow-loop {
+  animation: arrow-loop 520ms ease-in-out;
+}
+
+.motion .group:hover .arrow-pass {
+  animation: arrow-pass 520ms ease-in-out;
+}
+
+.motion .group:hover .social-icon {
+  animation: icon-wiggle 480ms ease-in-out;
+}
+
+/* Research rows fill with red on hover */
+.paper-sweep {
+  position: absolute;
+  inset: 0 -1.5rem;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 450ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+@media (hover: hover) {
+  .paper-row:hover .paper-sweep {
+    transform: scaleX(1);
+  }
+
+  .paper-row:hover h3,
+  .paper-row:hover a,
+  .paper-row:hover p {
+    color: var(--color-ink) !important;
+  }
+}
+
+.cursor-label {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--color-ink);
+  font-size: 2.5px;
+  font-weight: 700;
+}
+
+/* Everything scroll-driven hangs off .motion, so with it off the page is plain and readable. */
+.motion .preloader {
+  display: flex;
+}
+
+.motion .hero-stage {
+  height: 340svh;
+}
+
+.motion .hero-sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: clip;
+}
+
+.motion .manifesto-layer {
+  position: absolute;
+  inset: 0;
+  clip-path: circle(0 at 50% 50%);
+}
+
+.motion .hero-stop {
+  opacity: 0;
+}
+
+.motion [data-intro],
+.motion [data-split] {
+  visibility: hidden;
+}
+
+.motion [data-reveal] {
+  opacity: 0;
+}
+
+.motion .service-panel {
+  position: sticky;
+  top: 0;
+}
+
+html:not(.motion) .seam,
+html:not(.motion) .float-dot {
+  display: none;
+}
+
+@media (min-width: 960px) {
+  .seam {
+    height: 16svh;
+  }
+
+  .motion .hero-stage {
+    height: 430svh;
+  }
+
+  .motion .work-stage {
+    height: 600vh;
+  }
+
+  .motion .work-sticky {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    height: 100svh;
+    overflow: clip;
+  }
+
+  .motion .work-track {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 3vw;
+    width: max-content;
+    padding: 0 6vw;
+    will-change: transform;
+  }
+
+  .motion .work-intro {
+    grid-column: auto;
+    width: 34vw;
+  }
+
+  .motion .work-panel {
+    width: min(56vw, 56rem);
+  }
+
+  .motion .work-media {
+    height: 54svh;
+    aspect-ratio: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:not(.motion) *,
+  html:not(.motion) *::before,
+  html:not(.motion) *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
